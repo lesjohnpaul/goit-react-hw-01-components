@@ -14,7 +14,7 @@ export const MenuItemList = ({ salads }) => {
 
   return (
     <div>
-      {userLoggedIn && //conditional rendering
+      {userLoggedIn ? ( //conditional rendering
         salads.map(({ name, description, imageUrl, price }) => (
           <MenuItem
             key={name}
@@ -23,7 +23,13 @@ export const MenuItemList = ({ salads }) => {
             imageUrl={imageUrl}
             price={price}
           />
-        ))}
+        ))
+      ) : (
+        //ternary operator
+        <p>
+          User needs to Login first before being able to access the menu Items
+        </p>
+      )}
     </div>
   );
 };
