@@ -1,6 +1,6 @@
 import salads from '../data/salads.json';
 import MenuItem from './MenuItem/MenuItem';
-
+import PropTypes from 'prop-types';
 export const App = () => {
   return (
     <div>
@@ -32,4 +32,19 @@ export const MenuItemList = ({ salads }) => {
       )}
     </div>
   );
+};
+
+MenuItem.propTypes = {
+  salads: PropTypes.arrayOf(
+    //for an array
+    PropTypes.shape({
+      name: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      imageUrl: PropTypes.string.isRequired,
+      price: PropTypes.shape({
+        //shape is to access the nested object
+        individual: PropTypes.number.isRequired,
+      }).isRequired,
+    })
+  ).isRequired,
 };

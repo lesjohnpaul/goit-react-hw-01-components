@@ -17,6 +17,7 @@ MenuItem.propTypes = {
   description: PropTypes.string.isRequired,
   imageUrl: PropTypes.string.isRequired,
   price: PropTypes.shape({
+    //shape is to access the nested object
     individual: PropTypes.number.isRequired,
   }).isRequired,
 };
