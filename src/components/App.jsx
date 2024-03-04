@@ -1,21 +1,29 @@
-import MenuItem from "./Menuitem/MenuItem";
+import salads from '../data/salads.json';
+import MenuItem from './MenuItem/MenuItem';
 
 export const App = () => {
   return (
-  <div>
-    <MenuItem/>
+    <div>
+      <MenuItemList salads={salads} />
     </div>
   );
 };
 
+export const MenuItemList = ({ salads }) => {
+  const userLoggedIn = true;
 
-// import MenuItemList from './MenuItemList/MenuItemList';
-// import salads from '../data/salads.json';
-
-// export const App = () => {
-//   return (
-//     <div>
-//       <MenuItemList salads={salads} />
-//     </div>
-//   );
-// };
+  return (
+    <div>
+      {userLoggedIn && //conditional rendering
+        salads.map(({ name, description, imageUrl, price }) => (
+          <MenuItem
+            key={name}
+            name={name}
+            description={description}
+            imageUrl={imageUrl}
+            price={price}
+          />
+        ))}
+    </div>
+  );
+};
