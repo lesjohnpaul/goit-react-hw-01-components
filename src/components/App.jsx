@@ -11,7 +11,6 @@ export const App = () => {
 
 export const MenuItemList = ({ salads }) => {
   const userLoggedIn = true;
-
   return (
     <div>
       {userLoggedIn ? ( //conditional rendering
