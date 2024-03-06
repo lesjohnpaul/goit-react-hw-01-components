@@ -1,6 +1,22 @@
 import PropTypes from 'prop-types';
 
-const MenuItem = ({ name, description, imageUrl, price }) => {
+const getBgColor = availability => {
+  switch (availability) {
+    case 'Available':
+      return '#C5e8d7';
+    case 'Few Left':
+      return '#F7e2bc';
+    case 'Not Available':
+      return '#e8c5c6';
+    case 'Seasonal':
+      return '#c5d4e8';
+    default:
+      throw new Error(`Unsupported availability Status - ${availability}`);
+  }
+};
+
+const MenuItem = ({ name, description, imageUrl, price, availability }) => {
+  //inline styles for each element
   const styles = {
     container: {
       marginBottom: '20px',
@@ -10,6 +26,7 @@ const MenuItem = ({ name, description, imageUrl, price }) => {
       maxWidth: '400px',
       marginLeft: 'auto',
       marginRight: 'auto',
+      backgroundColor: getBgColor(availability),
     },
     image: {
       height: '400px',
@@ -30,6 +47,7 @@ const MenuItem = ({ name, description, imageUrl, price }) => {
       <p style={styles.description}>{description}</p>
       <p style={styles.price}>Price: ${price.individual.toFixed(2)}</p>
       <p style={styles.priceSmall}>Price of Small ${price.Small.toFixed(2)}</p>
+      <p>{availability}</p>
     </div>
   );
 };
