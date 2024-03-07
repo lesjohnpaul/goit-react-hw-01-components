@@ -1,22 +1,87 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { AiFillCheckCircle } from 'react-icons/ai';
-import './MenuItem.css';
+import styles from './MenuItem.module.css';
 
 const getClassNameForAvailability = availability => {
   switch (availability) {
     case 'Available':
-      return 'available';
+      return styles.available;
     case 'Few Left':
-      return 'fewLeft';
+      return styles.fewLeft;
     case 'Not Available':
-      return 'notAvailable';
+      return styles.notAvailable;
     case 'Seasonal':
-      return 'seasonal';
+      return styles.seasonal;
     default:
       return '';
   }
 };
+const MenuItem = ({ name, description, imageUrl, price, availability }) => {
+  const availabilityClass = getClassNameForAvailability(availability);
+
+  return (
+    <div className={`${styles.menuItemContainer} ${availabilityClass}`}>
+      <img src={imageUrl} alt={name} className={styles.menuItemImage} />
+      <h2 className={styles.menuItemName}>
+        <AiFillCheckCircle
+          className={`${styles.menuItemIcon} ${availabilityClass}`}
+        />
+        {name}
+      </h2>
+      <p className={styles.menuItemDescription}>{description}</p>
+      <p className={styles.menuItemPrice}>
+        Price: ${price.individual.toFixed(2)}
+      </p>
+    </div>
+  );
+};
+
+//================================VANILLA CSS APPROACH====================
+// const getClassNameForAvailability = availability => {
+//   switch (availability) {
+//     case 'Available':
+//       return 'available';
+//     case 'Few Left':
+//       return 'fewLeft';
+//     case 'Not Available':
+//       return 'notAvailable';
+//     case 'Seasonal':
+//       return 'seasonal';
+//     default:
+//       return '';
+//   }
+// };
+
+// const MenuItem = ({ name, description, imageUrl, price, availability }) => {
+//   const availabilityClass = getClassNameForAvailability(availability);
+
+//   return (
+//     <div className={`menuItemContainer ${availabilityClass}`}>
+//       <img
+//         src={imageUrl}
+//         alt={name}
+//         className={`menutItemImage ${availabilityClass}`}
+//       />
+//       <h2 className="menuItemName">
+//         <span className={`menuItemIcon ${availabilityClass}`}>
+//           <AiFillCheckCircle />
+//         </span>
+//         {name}
+//       </h2>
+//       <p className={`menuItemDescription ${availabilityClass}`}>
+//         {description}
+//       </p>
+//       <p className={`menuItemPrice ${availabilityClass}`}>
+//         Price: ${price.individual.toFixed(2)}
+//       </p>
+//       <p className={`menuItemPrice ${availabilityClass}`}>
+//         Price of Small ${price.Small.toFixed(2)}
+//       </p>
+//     </div>
+//   );
+// };
+
 //================================INLINE CSS APPROACH====================
 // const getBgColor = availability => {
 //   switch (availability) {
@@ -32,36 +97,6 @@ const getClassNameForAvailability = availability => {
 //       throw new Error(`Unsupported availability Status - ${availability}`);
 //   }
 // };
-
-const MenuItem = ({ name, description, imageUrl, price, availability }) => {
-  const availabilityClass = getClassNameForAvailability(availability);
-
-  return (
-    <div className={`menuItemContainer ${availabilityClass}`}>
-      <img
-        src={imageUrl}
-        alt={name}
-        className={`menutItemImage ${availabilityClass}`}
-      />
-      <h2 className="menuItemName">
-        <span className={`menuItemIcon ${availabilityClass}`}>
-          <AiFillCheckCircle />
-        </span>
-        {name}
-      </h2>
-      <p className={`menuItemDescription ${availabilityClass}`}>
-        {description}
-      </p>
-      <p className={`menuItemPrice ${availabilityClass}`}>
-        Price: ${price.individual.toFixed(2)}
-      </p>
-      <p className={`menuItemPrice ${availabilityClass}`}>
-        Price of Small ${price.Small.toFixed(2)}
-      </p>
-    </div>
-  );
-};
-
 //================================INLINE CSS APPROACH======================
 // const MenuItem = ({ name, description, imageUrl, price, availability }) => {
 //inline styles for each element

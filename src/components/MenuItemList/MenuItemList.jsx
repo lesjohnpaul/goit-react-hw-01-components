@@ -1,11 +1,12 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import MenuItem from 'components/MenuItem/MenuItem';
-import './MenuItemList.css';
+import styles from './MenuItemList.module.css';
 
 export const MenuItemList = ({ salads }) => {
   const userLoggedIn = true;
   return (
-    <div className="menuItemListContainer">
+    <div className={styles.menuItemListContainer}>
       {userLoggedIn ? (
         salads.map(({ name, description, imageUrl, price, availability }) => (
           <MenuItem
