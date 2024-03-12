@@ -1,31 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MenuItem from 'components/MenuItem/MenuItem';
+import MenuItem from 'components/MenuiItem/MenuItem';
 import styles from './MenuItemList.module.css';
 
-export const MenuItemList = ({ salads }) => {
-  const userLoggedIn = true;
-  return (
-    <div className={styles.menuItemListContainer}>
-      {userLoggedIn ? (
-        salads.map(({ name, description, imageUrl, price, availability }) => (
-          <MenuItem
-            key={name}
-            name={name}
-            description={description}
-            imageUrl={imageUrl}
-            price={price}
-            availability={availability}
-          />
-        ))
-      ) : (
-        <p>
-          user needs to login first before being able to access the menu items.
-        </p>
-      )}
-    </div>
-  );
-};
+class MenuItemList extends React.Component {
+  render() {
+    const { salads } = this.props;
+    const userLoggedIn = true;
+    return (
+      <div className={styles.menuItemListContainer}>
+        {userLoggedIn ? (
+          salads.map(({ name, description, imageUrl, price, availability }) => (
+            <MenuItem
+              key={name}
+              name={name}
+              description={description}
+              imageUrl={imageUrl}
+              price={price}
+              availability={availability}
+            />
+          ))
+        ) : (
+          <p>
+            user needs to login first before being able to access the menu
+            items.
+          </p>
+        )}
+      </div>
+    );
+  }
+}
 
 MenuItemList.propTypes = {
   salads: PropTypes.arrayOf(

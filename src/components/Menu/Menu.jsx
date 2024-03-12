@@ -3,14 +3,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import css from './Menu.module.css'; // Assume some basic styling for the Menu componen
 
-const Menu = ({ title, children }) => {
-  return (
-    <div className={css.menuContainer}>
-      {title && <h1>{title}</h1>}
-      {children}
-    </div>
-  );
-};
+class Menu extends React.Component {
+  render() {
+    const { title, children } = this.props;
+    return (
+      <div className={css.menuContainer}>
+        {title && <h1>{title}</h1>}
+        {children}
+      </div>
+    );
+  }
+}
 
 Menu.propTypes = {
   title: PropTypes.string,
