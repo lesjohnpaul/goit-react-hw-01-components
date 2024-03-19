@@ -5,12 +5,12 @@ import styles from './MenuItemList.module.css';
 
 class MenuItemList extends React.Component {
   render() {
-    const { salads } = this.props;
+    const { shoes } = this.props;
     const userLoggedIn = true;
     return (
       <div className={styles.menuItemListContainer}>
         {userLoggedIn ? (
-          salads.map(({ name, description, imageUrl, price, availability }) => (
+          shoes.map(({ name, description, imageUrl, price, availability }) => (
             <MenuItem
               key={name}
               name={name}
@@ -32,7 +32,7 @@ class MenuItemList extends React.Component {
 }
 
 MenuItemList.propTypes = {
-  salads: PropTypes.arrayOf(
+  shoes: PropTypes.arrayOf(
     PropTypes.shape({
       name: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
@@ -48,7 +48,7 @@ MenuItemList.propTypes = {
 export default MenuItemList;
 
 //================================INLINE CSS APPROACH======================
-// export const MenuItemList = ({ salads }) => {
+// export const MenuItemList = ({ shoes }) => {
 //   const styles = {
 //     container: { padding: '20px' },
 //     loginMessage: { fontSize: '18px', color: 'red', fontWeight: 'bold' },
@@ -58,7 +58,7 @@ export default MenuItemList;
 //   return (
 //     <div style={styles.container}>
 //       {userLoggedIn ? (
-//         salads.map(({ name, description, imageUrl, price, availability }) => (
+//         shoes.map(({ name, description, imageUrl, price, availability }) => (
 //           <MenuItem
 //             key={name}
 //             name={name}
@@ -78,7 +78,7 @@ export default MenuItemList;
 // };
 
 // MenuItemList.propTypes = {
-//   salads: PropTypes.arrayOf(
+//   shoes: PropTypes.arrayOf(
 //     PropTypes.shape({
 //       name: PropTypes.string.isRequired,
 //       description: PropTypes.string.isRequired,

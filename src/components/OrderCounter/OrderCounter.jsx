@@ -6,7 +6,7 @@ import OrderStatistics from 'components/OrderStatistics/OrderStatistics';
 
 class OrderCounter extends React.Component {
   static propTypes = {
-    salads: PropTypes.arrayOf(
+    shoes: PropTypes.arrayOf(
       PropTypes.shape({
         name: PropTypes.string.isRequired,
         description: PropTypes.string,
@@ -22,7 +22,7 @@ class OrderCounter extends React.Component {
 
     const orders = {};
 
-    props.salads.forEach(salad => {
+    props.shoes.forEach(salad => {
       orders[salad.name] = 0;
     });
 
@@ -62,7 +62,7 @@ class OrderCounter extends React.Component {
 
     return (
       <div className={styles.container}>
-        <OrderOptions onOrder={this.createOrder} salads={this.props.salads} />
+        <OrderOptions onOrder={this.createOrder} shoes={this.props.shoes} />
         <OrderStatistics orders={orders} totalOrders={totalOrders} />
         <button onClick={this.resetOrders} className={styles.resetButton}>
           Reset Orders
