@@ -1,6 +1,8 @@
 .menuContainer {
   background-color: lightblue;
-  height: 100vh;
+  height: 70vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
