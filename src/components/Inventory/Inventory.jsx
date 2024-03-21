@@ -25,7 +25,7 @@ export class Inventory extends Component {
     items: [],
     searchTerm: '',
   };
-
+  jt;
   addItem = newItem => {
     this.setState(prevState => ({
       items: [...prevState.items, newItem],
